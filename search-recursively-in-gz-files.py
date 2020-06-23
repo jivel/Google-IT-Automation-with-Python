@@ -19,8 +19,8 @@ def search_recursively_in_gz_files(text):
     print("Total: {}".format(total))
 
 def find_text_in_gz_file(path_gz, text):
-    with gzip.open(path_gz, 'rb') as input_file:
-        all_data = input_file.read().decode(ENCODING)
+    with gzip.open(filename=path_gz, mode='rt', encoding=ENCODING) as input_file:
+        all_data = input_file.read()
         lines = re.findall(r'{}'.format(text), all_data)
         if lines:
             print('Total: {} Path file: {}'.format(len(lines), path_gz))
